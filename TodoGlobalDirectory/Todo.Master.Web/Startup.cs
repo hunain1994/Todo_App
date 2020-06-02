@@ -31,6 +31,8 @@ namespace Todo.Master.Web
                 .Enrich.FromLogContext()
                 .WriteTo.File("logs/log-.log", outputTemplate: outputTemplate, rollingInterval: RollingInterval.Day)
                 .CreateLogger();
+
+            services.Configure<Utility.ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

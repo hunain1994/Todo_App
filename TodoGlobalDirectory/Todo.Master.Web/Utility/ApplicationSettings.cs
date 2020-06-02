@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace Todo.Master.Web.Utility
 {
-    public static class ApplicationSettings
+    public class ApplicationSettings
     {
-        public static string webApiUrl { get; set; }
+        public string webApiUrl { get; set; }
     }
 }

@@ -12,6 +12,7 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Todo.Master.Services.Dtos;
 using Todo.Master.Web.Models;
+using Todo.Master.Web.Utility;
 
 namespace Todo.Master.Web.Controllers
 {
@@ -19,11 +20,13 @@ namespace Todo.Master.Web.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly string _baseApiUrl;
+        private readonly ApplicationSettings _appSettings;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IOptions<ApplicationSettings> appSettings)
         {
             _logger = logger;
-            _baseApiUrl = "http://localhost:5000/api/";
+            _appSettings = appSettings.Value;
+            _baseApiUrl = _appSettings.webApiUrl;
         }
 
         public async Task<IActionResult> Index()
